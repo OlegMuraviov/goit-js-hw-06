@@ -11,15 +11,19 @@ function onFormSubmit(event) {
     password: event.currentTarget.elements.password.value,
   };
 
-  formInputChecker(formInputValues);
+  if (!formInputChecker(formInputValues)) return;
 
   console.log(formInputValues);
   event.currentTarget.reset();
 }
 
 function formInputChecker({ email, password }) {
-  const messageEmail = "Вы не ввели email!";
-  const messagePSW = "Вы не ввели пароль!";
-  if (email === "") return `${alert(messageEmail)}`;
-  if (password === "") return `${alert(messagePSW)}`;
+  let message = "";
+  if (email === "") message = "Вы не ввели email!\n";
+  if (password === "") message += "Вы не ввели пароль!";
+  if (message) {
+    alert(message);
+    return false;
+  }
+  return true;
 }
