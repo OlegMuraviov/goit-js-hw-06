@@ -7,20 +7,12 @@ const refs = {
   input: document.querySelector("#name-input"),
   output: document.querySelector("#name-output"),
 };
-refs.input.addEventListener("input", onInputChange);
-function onInputChange(event) {
-  console.log(event.currentTarget.value);
-  refs.output.textContent = event.currentTarget.value;
-  refs.output.textContent === ""
-    ? (refs.output.textContent = "Anonymous")
-    : false;
-}
 
-/*refs.input.addEventListener("focus", onInputFocus);
-refs.input.addEventListener("blur", onInputBlur);
-// function onInputFocus() {
-  console.log("input take focus - action focus");
+refs.input.addEventListener("input", onInputChange);
+
+function onInputChange(event) {
+  let text = event.currentTarget.value;
+  text !== ""
+    ? (refs.output.textContent = text)
+    : (refs.output.textContent = "Anonymous");
 }
-function onInputBlur() {
-  console.log("input lost focus - action blur");
-}*/
