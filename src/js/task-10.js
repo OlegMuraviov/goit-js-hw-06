@@ -9,12 +9,12 @@ const controlsEl = document.querySelector("#controls");
 const inputCountEl = document.querySelector("input");
 const buttonCreateEl = document.querySelector("[data-create]");
 const buttonDestroyEl = document.querySelector("[data-destroy]");
-const boxexEl = document.querySelector("#boxes");
+const boxesEl = document.querySelector("#boxes");
 
 // При нажатии на кнопку Очистить, коллекция элементов очищается.
 inputCountEl.addEventListener("input", onInputValue);
-buttonDestroyEl.addEventListener("click", onDestroyBoxex);
-buttonCreateEl.addEventListener("click", onCreateBoxex);
+buttonDestroyEl.addEventListener("click", onDestroyBoxes);
+buttonCreateEl.addEventListener("click", onCreateBoxes);
 
 let inputCurrentValue = 0;
 // Размеры самого первого <div> - 30px на 30px.
@@ -24,15 +24,15 @@ function onInputValue(event) {
   inputCurrentValue = event.currentTarget.value;
   console.log(`value = ${inputCurrentValue}`);
 }
-function onDestroyBoxex() {
+function onDestroyBoxes() {
   inputCurrentValue = 0;
   inputCountEl.value = "";
-  boxexEl.innerHTML = "";
+  boxesEl.innerHTML = "";
 }
 
 // Создай функцию createBoxes(amount), которая принимает один параметр - число.
 // Функция создает столько < div >, сколько указано в amount и добавляет их в div#boxes.
-function onCreateBoxex(event) {
+function onCreateBoxes(event) {
   const amount = inputCountEl.value;
   inputCountEl.value = "";
   for (let i = 0; i < amount; i++) {
@@ -44,7 +44,7 @@ function onCreateBoxex(event) {
     box.style.backgroundColor = getRandomHexColor();
     // Каждый элемент после первого, должен быть шире и выше предыдущего на 10px.
     size += 10;
-    console.log(boxexEl);
-    boxexEl.appendChild(box);
+    console.log(boxesEl);
+    boxesEl.appendChild(box);
   }
 }
